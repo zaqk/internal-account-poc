@@ -27,7 +27,7 @@ export function CreateAccount(): ReactElement {
       return;
     }
 
-    async function sign(
+    async function create(
       library: Provider,
       account: string
     ): Promise<void> {
@@ -72,7 +72,7 @@ export function CreateAccount(): ReactElement {
       }
     }
 
-    sign(library, account);
+    create(library, account);
   }
 
   return (

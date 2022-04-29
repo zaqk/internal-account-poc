@@ -7,6 +7,9 @@ import { WalletStatus } from './components/WalletStatus';
 import { MintItem } from './components/MintItem';
 import { MintCharacter } from './components/MintCharacter';
 import { CreateAccount } from './components/CreateAccount';
+import { UseItem } from './components/UseItem';
+import { ApproveItem } from './components/ApproveItem';
+import { SendGas } from './components/SendGas';
 
 const StyledAppDiv = styled.div`
   display: grid;
@@ -25,6 +28,12 @@ export function App(): ReactElement {
       <MintItem />
       <SectionDivider />
       <CreateAccount />
+      <SectionDivider />
+      <ApproveItem />
+      <SectionDivider />
+      <SendGas />
+      <SectionDivider />
+      <UseItem />
     </StyledAppDiv>
   );
 }
@@ -33,6 +42,6 @@ export function App(): ReactElement {
 - first mint character
 - then mint item
 - then create account
-- then approve the created account
+- then approve the created account?
 - then click a button that burns (consumes) the item w/o a metamask confirmation modal
 */

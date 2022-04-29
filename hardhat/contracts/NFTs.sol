@@ -14,14 +14,14 @@ contract Character is SimpleERC721 {
   Item public immutable item;
 
   // tokenId => count of items used/burned
-  mapping(uint256 => uint256) getItemUsageCount;
+  mapping(uint256 => uint256) public getItemUsageCount;
   
   constructor(string memory _name, string memory _symbol, address _item) SimpleERC721(_name, _symbol) {
     item = Item(_item);
   }
 
   function useItem(uint256 _tokenId, uint256 _itemId) external {
-    getItemUsageCount[_tokenId] = getItemUsageCount[_tokenId]++;
+    getItemUsageCount[_tokenId]++;
     item.burn(_itemId);
   }
 

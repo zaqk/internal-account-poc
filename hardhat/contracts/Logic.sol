@@ -11,6 +11,8 @@ contract Logic {
   Item public immutable item;
   Character public immutable character;
 
+  event ItemUsed(uint256 charId, uint256 itemId);
+
   constructor(address _accountManager, address _item, address _character) {
     accountManager = AccountManager(_accountManager);
     item = Item(_item);
@@ -20,6 +22,7 @@ contract Logic {
   function useItem(uint256 _charId, uint256 _itemId) external {
     require(accountManager.getGameAccount(msg.sender) == character.ownerOf(_charId), "NOT_AUTHORIZED");
     character.useItem(_charId, _itemId);
+    emit ItemUsed(_charId, _itemId);
   }
 
 }

@@ -3,6 +3,8 @@ pragma solidity 0.8.13;
 
 import { ERC721 } from "@rari-capital/solmate/src/tokens/ERC721.sol";
 
+import 'hardhat/console.sol';
+
 abstract contract SimpleERC721 is ERC721 {
 
   uint256 tokenId;
@@ -20,11 +22,12 @@ abstract contract SimpleERC721 is ERC721 {
 
   function burn(uint256 _tokenId) external {
     address owner = ownerOf[_tokenId];
+
     require( 
-      msg.sender == owner 
-      || isApprovedForAll[owner][msg.sender] 
-      || getApproved[_tokenId] == msg.sender,
-      "NOT_AUTHORIZED"
+      tx.origin == owner 
+      || isApprovedForAll[owner][tx.origin] 
+      || getApproved[_tokenId] == tx.origin,
+      "NOT_AUTHORIZED_TO_BURN"
     );
     _burn(_tokenId);
   }

@@ -26,7 +26,7 @@ export function MintCharacter(): ReactElement {
       return;
     }
 
-    async function approve(
+    async function mint(
       library: Provider,
     ): Promise<void> {
 
@@ -52,7 +52,7 @@ export function MintCharacter(): ReactElement {
       }
     }
 
-    approve(library);
+    mint(library);
   }
 
   return (
